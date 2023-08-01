@@ -109,7 +109,7 @@ def setup_platform(
                     calendar=calendar,
                     entity_id=entity_id,
                     days=days,
-                    all_day=True,
+                    include_all_day=True,
                     search=cust_calendar[CONF_SEARCH],
                 )
             )
@@ -125,7 +125,7 @@ def setup_platform(
                     calendar=calendar,
                     entity_id=entity_id,
                     days=days,
-                    all_day=True,
+                    include_all_day=True,
                 )
             )
 
@@ -135,12 +135,14 @@ def setup_platform(
 class WebDavCalendarEntity(CalendarEntity):
     """A device for getting the next Task from a WebDav Calendar."""
 
-    def __init__(self, name, calendar, entity_id, days, all_day=False, search=None):
+    def __init__(
+        self, name, calendar, entity_id, days, include_all_day=False, search=None
+    ):
         """Create the WebDav Calendar Event Device."""
         self.data = WebDavCalendarData(
             calendar=calendar,
             days=days,
-            include_all_day=all_day,
+            include_all_day=include_all_day,
             search=search,
         )
         self.entity_id = entity_id
